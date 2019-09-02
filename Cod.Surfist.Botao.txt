@@ -1,0 +1,267 @@
+surfista1 = display.newImageRect( surfistasGroup,"imagens/surfista.png", 60, 100 )
+surfista1.x = display.contentCenterX
+surfista1.y = display.contentHeight - 100
+
+--Botões
+local buttons = {}
+
+buttons[1] = display.newImage("imagens/button.png")--right
+buttons[1].x = 90
+buttons[1].y = 280
+buttons[1].myName = "right"
+
+buttons[2] = display.newImage("imagens/button.png")--left
+buttons[2].x = 30
+buttons[2].y = 280
+buttons[2].rotation = -180
+buttons[2].myName = "left"
+
+local yAxis = 0
+local xAxis = 0
+
+local touchFunction = function(e)
+	local eventName = e.phase
+	local direction = e.target.myName
+	
+	if eventName == "began" or eventName == "moved" then
+		if direction == "right" then 
+			xAxis = 5
+			yAxis = 0
+		elseif direction == "left" then
+			xAxis = -5
+			yAxis = 0
+		end
+	else 
+		yAxis = 0
+		xAxis = 0
+	end
+end
+
+local j=1
+
+for j=1, #buttons do 
+	buttons[j]:addEventListener("touch", touchFunction)
+end
+
+local update = function()
+	surfista1.x = surfista1.x + xAxis
+	surfista1.y = surfista1.y + yAxis
+
+end
+
+Runtime:addEventListener("enterFrame", update)
+
+Código com efeito com movimento do fundo e personagem:
+
+-----------------------------------------------------------------------------------------
+--
+-- main.lua
+--
+-----------------------------------------------------------------------------------------
+
+-- Your code here
+
+-- Declaracao de variaveis:
+-- Initialize variables
+local lives = 3
+local score = 0
+local died = false
+ 
+local surfista1
+local livesText
+local scoreText
+
+local w = display.contentWidth
+local h = display.contentHeight
+
+local baseline = 280
+ 
+-- background1
+local background1 = display.newImage( "imagens/background1.jpg" )
+background1.x = 0
+background1.y = baseline-115
+background1.yScale = 1.3--dá uma esticada na imagem na vertical
+ 
+-- O dobro de praia para fazer a animação
+local background2 = display.newImage( "imagens/background1.jpg" )
+background2.x = 610-- Quando um dos trilhos termina, aparece o outro
+background2.y = baseline-115
+background2.yScale = 1.3
+
+-- Set up display groups
+local backGroup = display.newGroup()  -- Display group for the background image
+local surfistasGroup = display.newGroup()  -- Grupo de imagens do surfistas
+local lixosGroup = display.newGroup()
+local textGroup = display.newGroup()
+
+-- bonecoTeste
+--configuramos largura e altura dos sprites, bem como o nro. deles
+local sheetOptions = { width = 84, height = 120, numFrames = 6 }
+--carregamos a spritesheet com as opções
+local sheet = graphics.newImageSheet( "imagens/BonecoTeste.png", sheetOptions )
+ 
+--definimos uma animação (sequence)
+local sequences = {
+    {
+        name = "normalRun",
+        start = 1,
+        count = 6,
+        time =600,
+        loopCount = 0,
+        loopDirection = "forward"
+    }
+}
+--criamos um objeto de display com todas as configs anteriores
+local running = display.newSprite( sheet, sequences )
+ 
+--posicionamos o objeto na tela
+running.x = display.contentWidth / 4 + 40
+running.y = 225--distância do cavalo ao chão
+running.xScale = 1
+running.yScale = 1.2
+ 
+--manda rodar
+--running:play()--remover
+running.isVisible = false;
+ 
+--cormano parado
+local waiting = display.newImage( "imagens/BonecoParado.png" )
+waiting.x = display.contentWidth / 4
+waiting.y = 225--distância do cavalo ao chão
+waiting.xScale = 1.2
+waiting.yScale = 1.2
+
+-- movendo os elementos
+local tPrevious = system.getTimer()
+local function move(event)
+ if(running.isVisible) then--só move cenário se Cormano estiver correndo
+ local tDelta = event.time - tPrevious
+ tPrevious = event.time
+ 
+ local xOffset = ( 0.2 * tDelta )
+ background1.x = background1.x - xOffset
+ background2.x = background2.x - xOffset
+ 
+ if (background1.x + background1.contentWidth) < 0 then
+ background1:translate( 610 * 2, 0)
+ end
+ if (background2.x + background2.contentWidth) < 0 then
+ background2:translate( 610 * 2, 0)
+ end
+ end
+end
+ 
+-- faz tudo acontecer
+Runtime:addEventListener( "enterFrame", move );
+
+--função de início
+local function start(event)
+	waiting.isVisible = false;
+	running.isVisible = true;
+	running:setSequence("normalRun")
+	running:play()
+	
+	--faz tudo acontecer
+	Runtime:addEventListener( "enterFrame", move );
+   end
+	
+   waiting:addEventListener("tap", start);
+	
+local function stop(event)
+	waiting.isVisible = true;
+	running.isVisible = false;
+	running:pause()
+end
+ 
+running:addEventListener("tap", stop);
+
+
+
+-- Display lives and score
+livesText = display.newText( textGroup, "Lives: " .. lives, 50, 80, native.systemFont, 16 )
+scoreText = display.newText( textGroup, "Score: " .. score, 120, 80, native.systemFont, 16 )
+
+-- Hide the status bar
+display.setStatusBar( display.HiddenStatusBar )
+
+local function updateText()
+    livesText.text = "Lives: " .. lives
+    scoreText.text = "Score: " .. score
+end
+
+--------------------------
+Movimentação
+
+    {   name = "Walk(2)",
+        start = 3,
+        count = 13,
+        time =300,
+        loopCount = 0       
+    },
+    {   name = "Walk(3)",
+        start = 4,
+        count = 13,
+        time =300,
+        loopCount = 0        
+    },
+    {   name = "Walk(4)",
+        start = 5,
+        count = 13,
+        time =300,
+        loopCount = 0        
+    },
+    {   name = "Walk(5)",
+        start = 6,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(6)",
+        start = 7,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(7)",
+        start = 8,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(8)",
+        start = 9,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(9)",
+        start = 10,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(10)",
+        start = 11,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(11)",
+        start = 12,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+    {   name = "Walk(12)",
+        start = 13,
+        count = 13,
+        time =300,
+        loopCount = 0      
+    },
+
+
+
+
+
+
+
