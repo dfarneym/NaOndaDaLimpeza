@@ -13,7 +13,7 @@
 - Viajar pelas praias para pegar onda e coletar o lixo deixado por pessoas que frequentam as praias.
 
 # Enredo e Personagens:
-- Beach Boy é um surfista que gostava de viajar pelo mundo para surfar em muitos picos diferentes de ondas. E certa vez, quando surfava, encontrou muito lixo boiando, próximo das ondas; ele ficou muito triste com a quantidade de lixo que as pessoas deixavam na praia e decidiu que todo dia, antes de surfar, tiraria 1 hora para coletar o lixo que estivesse pela praia e, assim, tentar fazer a sua parte e ser exemplo para outras pessoas que frequentam aquele point.  
+- Beach Boy é um surfista que gostava de viajar pelo mundo para surfar em muitos picos e pegar diferentes ondas. E certa vez, quando surfava, encontrou muito lixo boiando, próximo das ondas; ele ficou muito triste com a quantidade de lixo que as pessoas deixavam na praia e decidiu que todo dia, antes de surfar, tiraria 1 hora para coletar o lixo que estivesse pela praia e, assim, tentar fazer a sua parte e ser exemplo para outras pessoas que frequentam aquele point.  
 
 # Personagem Principal:
 - Beach Boy
