@@ -16,16 +16,16 @@
 - Beach Boy é um surfista que gostava de viajar pelo mundo para surfar em muitos picos diferentes de ondas. E certa vez, quando surfava, encontrou muito lixo boiando, próximo das ondas; ele ficou muito triste com a quantidade de lixo que as pessoas deixavam na praia e decidiu que todo dia, antes de surfar, tiraria 1 hora para coletar o lixo que estivesse pela praia e, assim, tentar fazer a sua parte e ser exemplo para outras pessoas que frequentam aquele point.  
 
 # PERSONAGEM PRINCIPAL:
-###Beach Boy
+- Beach Boy
 
 # INIMIGOS:
--A s pessoas que jogam lixo na praia.
+- As pessoas que jogam lixo na praia.
 
 # ITERAÇÃO DO JOGADOR:
 - O jogador vai interagir direto com o personagem principal quando ele coletar o lixo que vai estar espalhado pela praia, ganhando assim pontos ao completar a fase.
 
 # CONTROLES:
-###No celular vai existir duas setas uma para a direita e outra para a esquerda e um botão para pular e coletar o lixo. 
+- No celular vai existir duas setas uma para a direita e outra para a esquerda e um botão para pular e coletar o lixo. 
 
 # DIAGRAMA DE NAVEGAÇÃO:
 
