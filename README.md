@@ -28,6 +28,7 @@
 - No celular vai existir duas setas uma para a direita e outra para a esquerda e um botão para pular e coletar o lixo. 
 
 # DIAGRAMA DE NAVEGAÇÃO:
+![Diagrama de navegação](https://user-images.githubusercontent.com/53848638/64136723-1c190380-cdca-11e9-9354-1df03ddabbf6.JPG)
 
 # REGRAS DO JOGO COM SISTEMA DE PONTUAÇÃO:
 - O jogador deverá coletar determinada quantidade de lixo em um tempo estipulado. 
